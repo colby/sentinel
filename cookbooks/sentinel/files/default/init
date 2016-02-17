@@ -1,0 +1,26 @@
+#!/bin/bash
+# Start/Stop/restart script for Redis Sentinel
+
+NAME=`basename ${0}`
+EXEC=`which redis-sentinel`
+CONF="/etc/redis/${NAME}.conf"
+
+case "$1" in
+     start)
+         echo "Starting $NAME ..."
+         exec $EXEC $CONF --sentinel
+         ;;
+     stop)
+         echo "Stopping $NAME ..."
+         pkill redis-sentinel > /dev/null 2>&1
+         ;;
+     restart)
+         echo "Restarting $NAME ..."
+         $0 stop
+         sleep 2
+         $0 start
+         ;;
+     *)
+         echo "Usage $0 {start|stop|restart}"
+         ;;
+esac
