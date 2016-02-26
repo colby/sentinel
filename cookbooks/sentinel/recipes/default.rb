@@ -5,7 +5,7 @@ cookbook_file '/etc/init.d/redis-sentinel' do
     mode 0755
 end
 
-cookbook_file '/etc/redis/redis-sentinel.conf' do
+cookbook_file '/etc/redis/sentinel.conf' do
     source 'sentinel.conf'
     owner 'root'
     group 'root'
