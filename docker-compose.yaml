@@ -32,8 +32,8 @@ services:
     environment:
       - REDIS_MASTER_PASSWORD=password
     depends_on:
-      - master
-      - slave
+      - redis
+      - redis-slave
     ports:
       - '26379'
     networks:
