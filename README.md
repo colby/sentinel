@@ -2,7 +2,7 @@
 
 Here's a small multi-node sandbox for testing Redis Sentinel.
 
-Uses ~~Vagrant, Virtualbox, Chef~~, Docker and.. Redis Sentinel.
+Uses ~~Vagrant, Virtualbox, Chef,~~ Docker and.. Redis Sentinel.
 
 ### Requirements
 * Docker
@@ -31,12 +31,11 @@ e1c2e92f6713   f44f575040c1   "/opt/bitnami/script…"   14 seconds ago   Up 6 s
 78db319d76ab   f44f575040c1   "/opt/bitnami/script…"   3 minutes ago    Up 2 minutes   0.0.0.0:61383->6379/tcp    sentinel_redis_1
 ```
 
-#### Services
-
-In the context to the previous `docker ps`;
-
+In the example above the Endpoints would be
 * Redis: `redis://127.0.0.1:61383/0`
-* Sentinal: `redis://127.0.0.1:61437/0`
+* Sentinel: `redis://127.0.0.1:61437/0`
+
+You can directly connect to them via `redis-cli`
 
 ```sh
 $ redis-cli -p 61437
@@ -47,5 +46,5 @@ sentinel_tilt:0
 sentinel_running_scripts:0
 sentinel_scripts_queue_length:0
 sentinel_simulate_failure_flags:0
-master0:name=mymaster,status=ok,address=172.25.0.2:6379,slaves=2,sentinels=6
+master0:name=mymaster,status=ok,address=172.25.0.2:6379,slaves=2,sentinels=3
 ```
