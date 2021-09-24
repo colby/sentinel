@@ -23,6 +23,9 @@ Stopping: `docker compose down`
 
 ### Endpoints
 
+Note that the master and slave redis endpoints are protected by auth, no user
+is set, but the password is `password`.
+
 Endpoint ports are generated at random by Docker. Use `docker ps` to see what
 is assigned.
 
