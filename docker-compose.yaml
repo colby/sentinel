@@ -1,0 +1,35 @@
+version: '2'
+
+networks:
+  redis:
+    driver: bridge
+
+services:
+  master:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    networks:
+      - redis
+    ports:
+      - '6379'
+  slave:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis
+    ports:
+      - '6379'
+    depends_on:
+      - master
+    networks:
+      - redis
+  sentinel:
+    image: 'bitnami/redis-sentinel:latest'
+    depends_on:
+      - master
+      - slave
+    ports:
+      - '26379'
+    networks:
+      - redis
