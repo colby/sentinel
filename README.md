@@ -43,6 +43,27 @@ From the example above the endpoints to use would be
 You can directly connect to them via `redis-cli`
 
 ```sh
+$ redis-cli -p 61383
+127.0.0.1:61383> AUTH password
+OK
+127.0.0.1:61383> info replication
+# Replication
+role:master
+connected_slaves:2
+slave0:ip=172.18.0.3,port=6379,state=online,offset=210321,lag=0
+slave1:ip=172.18.0.4,port=6379,state=online,offset=210470,lag=0
+master_failover_state:no-failover
+master_replid:a9dc0d2cd508c1186b71115f5e68aab5c3616f72
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:210605
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:210605
+```
+
+```sh
 $ redis-cli -p 61437
 127.0.0.1:61437> info sentinel
 # Sentinel
