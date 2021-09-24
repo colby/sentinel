@@ -31,7 +31,7 @@ e1c2e92f6713   f44f575040c1   "/opt/bitnami/script…"   14 seconds ago   Up 6 s
 78db319d76ab   f44f575040c1   "/opt/bitnami/script…"   3 minutes ago    Up 2 minutes   0.0.0.0:61383->6379/tcp    sentinel_redis_1
 ```
 
-In the example above the Endpoints would be
+From the example above the endpoints to use would be
 * Redis: `redis://127.0.0.1:61383/0`
 * Sentinel: `redis://127.0.0.1:61437/0`
 
